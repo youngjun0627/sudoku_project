@@ -67,9 +67,7 @@ python3 main.py --imagepath (your image path)
 ![Generated image of sudoku](https://user-images.githubusercontent.com/68416187/123059168-76be9c00-d444-11eb-9961-bac246d98615.png)
 
 #### Mask images of sudoku keypoint detection(box, cells, keypoints)-
-<img src="https://user-images.githubusercontent.com/68416187/123059541-dae16000-d444-11eb-9200-1441f5f48b2f.PNG"  width="300" height="300">
-<img src="https://user-images.githubusercontent.com/68416187/123059679-fa788880-d444-11eb-94c8-90dfd05c6485.PNG"  width="300" height="300">
-<img src="https://user-images.githubusercontent.com/68416187/123059714-03695a00-d445-11eb-8715-8e8007c30e1e.PNG"  width="300" height="300">
+<img src="https://user-images.githubusercontent.com/68416187/123059541-dae16000-d444-11eb-9200-1441f5f48b2f.PNG"  width="300" height="300"><img src="https://user-images.githubusercontent.com/68416187/123059679-fa788880-d444-11eb-94c8-90dfd05c6485.PNG"  width="300" height="300"><img src="https://user-images.githubusercontent.com/68416187/123059714-03695a00-d445-11eb-8715-8e8007c30e1e.PNG"  width="300" height="300">
 
 #### Image of sudoku after keypoint detection and perspective transform-
 ![Transformed image of sudoku](변환 이미지 경로)
