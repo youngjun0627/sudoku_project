@@ -13,6 +13,7 @@ import numpy as np
 import os
 from collate_function import CF
 import torch.nn as nn
+from config import params
 
 parser = argparse.ArgumentParser(description='sudoku')
 parser.add_argument('--mode', default = 'train', type=str, help='insert mode')
@@ -24,13 +25,13 @@ def main_train(root):
     dataset_root = root
 
     ### hyper parameter ###
-    learning_rate = 0.001
-    weight_decay = 1e-4
-    epochs = 300
-    BATCHSIZE = 16
+    learning_rate = params['learning_rate']
+    weight_decay = params['weight_decay']
+    epochs = params['epochs']
+    BATCHSIZE = params['batch_size']
     ### custom ###
-    save_path = '../key.pth'
-    device = torch.device('cuda:0')
+    save_path = params['key_model']
+    device = torch.device('cuda:{}'.format(params['gpu']))
 
     original_size = 600
     scale = 0.45
@@ -41,7 +42,7 @@ def main_train(root):
     validset = Custom_Dataset(root, transform = val_transform, mode = 'validation')
     #testset = Custom_Dataset(root, transform = val_transform, mode = 'test')
 
-    train_dataloader = DataLoader(trainset, batch_size = BATCHSIZE, shuffle=True, num_workers=2, collate_fn = CF)
+    train_dataloader = DataLoader(trainset, batch_size = BATCHSIZE, shuffle=True, num_workers=params['num_workers'], collate_fn = CF)
     valid_dataloader = DataLoader(validset, batch_size = BATCHSIZE, shuffle=False, collate_fn = CF)
     mask_weight = [4.62525631, 4.63220993, 4.63623119, 4.63813273, 4.63734552, 4.63742598,
          4.63383315, 4.62894428, 4.62213573, 4.63426785, 4.63924746, 4.64331922,
@@ -94,8 +95,8 @@ def main_test(root):
 
     BATCHSIZE = 1
     ### custom ###
-    save_path = '../key.pth'
-    device = torch.device('cuda:1')
+    save_path = params['key_model']
+    device = torch.device('cuda:{}'.format(params['gpu']))
 
     assert os.path.exists(save_path)
 
@@ -118,8 +119,8 @@ def predict(img_path):
 
     BATCHSIZE = 1
     ### custom ###
-    save_path = '../key.pth'
-    device = torch.device('cuda:0')
+    save_path = params['key_model']
+    device = torch.device('cuda:{}'.format(params['gpu']))
 
     assert os.path.exists(save_path)
 
@@ -184,7 +185,7 @@ def predict(img_path):
         x, y = node[0], node[1]
         _img = cv2.circle(_img, (int(x), int(y)), 10, (255,0,0), 3)
     #print(_img)
-    cv2.imwrite('/home/guest0/sudoku/sudoku_keypoint/result.jpg', _img)
+    cv2.imwrite('./result.jpg', _img)
         
 if __name__=='__main__':
     imgpath = args.imagepath

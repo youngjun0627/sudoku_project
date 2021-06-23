@@ -2,6 +2,7 @@ import csv
 import cv2
 import numpy as np
 import os
+from config import params
 
 def imagProc(path,image_name):
     img = cv2.imread(path,cv2.IMREAD_COLOR)         
@@ -141,7 +142,7 @@ def list_to_num(_list, mode):
         _list =  list(map(float,_list.split(',')))
     return _list
 
-def calculate_mask2_weights(label_path='/home/guest0/sudoku/sudoku_keypoint/train.csv'):
+def calculate_mask2_weights(label_path='./train.csv'):
     '''
     f = open(label_path,'r', encoding='utf-8-sig')
     rdr = csv.reader(f)
@@ -197,11 +198,11 @@ if __name__=='__main__':
 
 
     
-    train_csv_path = '/home/guest0/sudoku/train.csv'
-    validation_csv_path = '/home/guest0/sudoku/validation.csv'
-    test_csv_path = '/home/guest0/sudoku/test.csv'
+    train_csv_path = os.path.join(params['csv_savepath'], 'train.csv')
+    validation_csv_path = os.path.join(params['csv_savepath'], 'validation.csv')
+    test_csv_path = os.path.join(params['csv_savepath'],'test.csv')
     split_ratio = 0.3
     k=0
-    train_validation_test_split('/mnt/data/guest0/sudoku_dataset', train_csv_path, validation_csv_path, test_csv_path, split_ratio,k)
+    train_validation_test_split(params['dataset_savepath'], train_csv_path, validation_csv_path, test_csv_path, split_ratio,k)
     
     #print(calculate_mask2_weights(label_path='/home/guest0/sudoku/sudoku_segmentation/train.csv'))

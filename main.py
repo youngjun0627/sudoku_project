@@ -10,6 +10,7 @@ from SolveSudoku import sudoku_solver
 from check_sudoku import check_sudoku
 import csv
 from draw_sudoku import draw_mat
+from config import params
 
 parser = argparse.ArgumentParser(description='sudoku')
 parser.add_argument('--imagepath', default = '.', type=str)
@@ -19,9 +20,9 @@ def main(img_path):
 
     BATCHSIZE = 1
     ### custom ###
-    keymodel_path = './key.pth'
-    nummodel_path = './num.pth'
-    device = torch.device('cuda:1')
+    keymodel_path = params['key_model']
+    nummodel_path = params['num_model']
+    device = torch.device('cuda:{}'.format(params['gpu']))
 
     assert os.path.exists(keymodel_path) or os.path.exists(nummodel_path)
 
@@ -60,7 +61,7 @@ def main(img_path):
     for node in vertex:
         x, y = node[0], node[1]
         _img = cv2.circle(_img, (int(x), int(y)), 10, (255,0,0), 3)
-    cv2.imwrite('/home/guest0/sudoku/{}.jpg'.format('result1'), _img)
+    #cv2.imwrite('./{}.jpg'.format('result1'), _img)
     
 
     size = original_size * scale
@@ -68,7 +69,7 @@ def main(img_path):
     e_point =  np.array([[0,0],[size,0], [size,size], [0,size]], dtype=np.float32)
     matrix = cv2.getPerspectiveTransform(s_point, e_point)
     img = cv2.warpPerspective(img, matrix, (int(size),int(size)))
-    cv2.imwrite('/home/guest0/sudoku/{}.jpg'.format('result'), img)
+    #cv2.imwrite('./sudoku/{}.jpg'.format('result'), img)
     input = torch.tensor(img, dtype=torch.float).permute(2,0,1).unsqueeze(0).to(device)
     input /= 255.
     sudoku = model2(input)
@@ -76,21 +77,21 @@ def main(img_path):
     print('original')
     print_sudoku(sudoku)
     _img = draw_mat(sudoku)
-    cv2.imwrite('/home/guest0/sudoku/{}.jpg'.format('detection sudoku'), _img)
+    cv2.imwrite('./{}.jpg'.format('detection sudoku'), _img)
     print('-------------------------')
     if check_sudoku(sudoku):    
         print('solution')
         _img = draw_mat(sudoku_solver(sudoku))
-        cv2.imwrite('/home/guest0/sudoku/{}.jpg'.format('solution'), _img)
+        cv2.imwrite('./{}.jpg'.format('solution'), _img)
         print_sudoku(sudoku_solver(sudoku)) 
 
 def test():    
 
     BATCHSIZE = 1
     ### custom ###
-    keymodel_path = './key.pth'
-    nummodel_path = './num.pth'
-    device = torch.device('cuda:1')
+    keymodel_path = params['key_model']
+    nummodel_path = params['num_model']
+    device = torch.device('cuda:{}'.format(params['gpu']))
 
     assert os.path.exists(keymodel_path) or os.path.exists(nummodel_path)
 
@@ -108,7 +109,7 @@ def test():
     original_size = 600
     scale = 0.45
     
-    f = open('./sudoku_keypoint/test.csv', 'r', encoding='utf-8-sig')
+    f = open('./test.csv', 'r', encoding='utf-8-sig')
     rdr = csv.reader(f)
     cnt=0
     total=0
@@ -142,7 +143,7 @@ def test():
         e_point =  np.array([[0,0],[size,0], [size,size], [0,size]], dtype=np.float32)
         matrix = cv2.getPerspectiveTransform(s_point, e_point)
         img = cv2.warpPerspective(img, matrix, (int(size),int(size)))
-        cv2.imwrite('/home/guest0/sudoku/{}.jpg'.format('result'), img)
+        cv2.imwrite('./{}.jpg'.format('result'), img)
         input = torch.tensor(img, dtype=torch.float).permute(2,0,1).unsqueeze(0).to(device)
         input /= 255.
         sudoku = model2(input)

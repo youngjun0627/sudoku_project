@@ -77,7 +77,7 @@ import copy
 from tqdm import tqdm
 import csv
 import random
-
+from config import params
 #np.set_printoptions(threshold=600*600*3,linewidth=np.inf)
 def generate_sudoku_image(imagename, original_img_path, sudoku,solution):
     image = np.zeros((174+9*28+174, 174+9*28+174, 3), dtype=np.uint8) # 이미지 넣기
@@ -130,17 +130,16 @@ def generate_sudoku_image(imagename, original_img_path, sudoku,solution):
         key = tr['keypoints']
         if check_boarder(mask) and len(key)==4:
             break
+    
+
     '''
-    plt.imshow(image)
-    plt.show()
-    plt.imshow(mask)
-    plt.show()
+    change path
     '''
 
-    save_images_path = '/mnt/data/guest0/sudoku_dataset/sudoku_images'
-    save_masks_path = '/mnt/data/guest0/sudoku_dataset/sudoku_masks'
-    save_masks2_path = '/mnt/data/guest0/sudoku_dataset/sudoku_masks2'
-    save_annotations_path ='/mnt/data/guest0/sudoku_dataset/sudoku_annotations'
+    save_images_path = os.path.join(params['dataset_savepath'], 'sudoku_images')
+    save_masks_path = os.path.join(params['dataset_savepath'], 'sudoku_masks')
+    save_masks2_path = os.path.join(params['dataset_savepath'], 'sudoku_masks2')
+    save_annotations_path = os.path.join(params['dataset_savepath'], 'sudoku_annotations')
 
     save_images_path
     if not os.path.exists(save_images_path):
@@ -187,14 +186,14 @@ def create_transform():
         
     translist += [albumentations.Blur(blur_limit=3)]
     translist += [albumentations.GaussianBlur(blur_limit=(3,5))]
-    i#translist += [albumentations.MedianBlur()]
+    #translist += [albumentations.MedianBlur()]
     translist += [albumentations.MotionBlur(blur_limit=(3,5))]
     translist += [albumentations.ColorJitter()]
     translist = albumentations.Compose(translist, additional_targets = {'mask2':'mask'}, keypoint_params=albumentations.KeypointParams(format='xy'))
     return translist
 
 def read_mnist(label, background):
-    root = '/mnt/data/guest0/sudoku_dataset/mnist_png/training'
+    root = params['mnist_path']
     number = np.random.randint(0,5000,1)[0]
     
     imagename = os.listdir(os.path.join(root,str(label)))[number]
@@ -251,10 +250,11 @@ def generate(diff, datapath, out_index):
 
 if __name__=='__main__':
     diff = ['easy', 'medium', 'hard', 'extreme']
+    ## background image path ##
     datapath = '/mnt/data/guest0/sudoku_dataset/newspapers/data'
     
     procs = []
-    for out_index in range(10):
+    for out_index in range(2):
         proc = Process(target=generate, args=(diff, datapath, out_index))
         procs.append(proc)
         proc.start()

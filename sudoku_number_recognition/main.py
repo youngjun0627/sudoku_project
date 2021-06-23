@@ -13,6 +13,7 @@ import numpy as np
 import os
 from collate_function import CF
 import torch.nn as nn
+from config import params
 
 parser = argparse.ArgumentParser(description='sudoku')
 parser.add_argument('--mode', default = 'train', type=str, help='insert mode')
@@ -24,13 +25,13 @@ def main_train(root):
     dataset_root = root
 
     ### hyper parameter ###
-    learning_rate = 0.01
-    weight_decay = 1e-3
-    epochs = 500
-    BATCHSIZE = 32
+    learning_rate = params['learning_rate']
+    weight_decay = params['weight_decay']
+    epochs = params['epochs']
+    BATCHSIZE = params['batch_size']
     ### custom ###
-    save_path = '../num.pth'
-    device = torch.device('cuda:1')
+    save_path = params['num_model']
+    device = torch.device('cuda:{}'.format(params['gpu']))
 
     original_size = 600
     scale = 0.45
@@ -41,7 +42,7 @@ def main_train(root):
     validset = Custom_Dataset(root, transform = val_transform, mode = 'validation')
     #testset = Custom_Dataset(root, transform = val_transform, mode = 'test')
 
-    train_dataloader = DataLoader(trainset, batch_size = BATCHSIZE, shuffle=True, num_workers=2, collate_fn = CF)
+    train_dataloader = DataLoader(trainset, batch_size = BATCHSIZE, shuffle=True, num_workers=params['num_workers'], collate_fn = CF)
     valid_dataloader = DataLoader(validset, batch_size = BATCHSIZE, shuffle=False, collate_fn = CF)
     weights = [4. for _ in range(10)]
     weights[0] = 0.3
@@ -76,8 +77,8 @@ def main_test(root):
 
     BATCHSIZE = 1
     ### custom ###
-    save_path = '../num.pth'
-    device = torch.device('cuda:1')
+    save_path = params['num_model']
+    device = torch.device('cuda:{}'.format(params['gpu']))
 
     assert os.path.exists(save_path)
 
@@ -101,8 +102,8 @@ def predict(img_path):
 
     BATCHSIZE = 1
     ### custom ###
-    save_path = './num.pth'
-    device = torch.device('cuda:0')
+    save_path = params['num_model']
+    device = torch.device('cuda:{}'.format(params['gpu']))
 
     assert os.path.exists(save_path)
 
@@ -138,7 +139,7 @@ def predict(img_path):
         x, y = node[0], node[1]
         _img = cv2.circle(_img, (int(x), int(y)), 10, (255,0,0), 3)
     #print(_img)
-    cv2.imwrite('/home/guest0/sudoku/sudoku_keypoint/seg_result/{}1.jpg'.format('result'), _img)
+    cv2.imwrite('./{}1.jpg'.format('result'), _img)
         
 if __name__=='__main__':
     imgpath = args.imagepath
