@@ -41,7 +41,7 @@ Download background images or mnist or your custom images.
 - MNIST : https://www.kaggle.com/prokaggler/mnistpng
 Change background path and save path(image, mask, annotation saving path).
 ```  
-vi generate_sudoku_images.py
+vi config.py
 ``` 
 Run generate_sudoku_images.py (if you want to generate data using MNIST, change to read_mnist and put mnist_data_path.)
 ```  
