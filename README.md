@@ -7,6 +7,10 @@ How to install
 git clone https://github.com/youngjun0627/sudoku_project.git
 cd sudoku
 ```
+Change to your paths.
+```   
+vi config.py
+```   
 
 ## Environment
 - Ubuntu 20.04
