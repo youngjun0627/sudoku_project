@@ -25,6 +25,7 @@ vi config.py
 - numpy 1.19.2
 - matplotlib 3.3.4
 - albumentations 1.0.0
+- timm 0.4.9
 
 ## Procedure
  > 1. Detect Keypoint.
@@ -33,12 +34,13 @@ vi config.py
  > 4. Solve sudoku.
 
 ## Run the program
+
 ### Generate dataset
 Change background path and save path(image, mask, annotation saving path).
 ```  
 vi generate_sudoku_images.py
 ``` 
-Run generate_sudoku_images.py
+Run generate_sudoku_images.py (if you want to generate data using MNIST, change to read_mnist and put mnist_data_path.)
 ```  
 python3 generate_sudoku_images.py
 ```  
@@ -60,6 +62,7 @@ python3 main.py
 ```  
 
 ### Test
+Our trained model : https://drive.google.com/drive/folders/1uZwdWEoew1xFxSRmYebzT8l-OVH93BOL?usp=sharing
 ```  
 cd Sudoku
 python3 main.py --imagepath (your image path)
