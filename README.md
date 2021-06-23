@@ -7,6 +7,7 @@ How to use
 git clone https://github.com/youngjun0627/sudoku_project.git
 cd ~~~~~
 ```
+
 ## Environment
 - Ubuntu 20.04
 - cuda version 11.2 (RTX2080)
@@ -34,15 +35,16 @@ cd ~~~~~
  > 4. Solve sudoku.
 
 ## Run the program
-1. d
+1. Generate dataset
 '''
->> ~~
+>> vi generate_sudoku_images.py
 '''
-2. ㅇ
+2. Train keypoint
 '''
 >> ~~~
 '''
-3. s
+3. Train number_recognition 
 '''
 ~~~
 '''
+4. test
