@@ -64,10 +64,7 @@ python3 main.py --imagepath (your image path)
 ## Working
 
 #### Generated image of sudoku-
-![Generated image of sudoku](입력 이미지 경로~)
-
-#### Detect corners of sudoku-
-![Corners of sudoku](키포인트 검출 이미지 경로)
+![Generated image of sudoku](https://user-images.githubusercontent.com/68416187/123059168-76be9c00-d444-11eb-9961-bac246d98615.png)
 
 #### Image of Sudoku after keypoint detection and perspective transform-
 ![Transformed image of sudoku](변환 이미지 경로)
