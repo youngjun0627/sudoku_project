@@ -22,12 +22,6 @@ cd ~~~~~
 - matplotlib 3.3.4
 - albumentations 1.0.0
 
-
-## File description
-- 
-- 
-- 
-
 ## Procedure
  > 1. Detect Keypoint.
  > 2. Perform perspective transform om image.
