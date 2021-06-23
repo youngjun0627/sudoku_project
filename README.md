@@ -37,11 +37,11 @@ cd ~~~~~
 ## Run the program
 1. Generate dataset
 '''
->> vi generate_sudoku_images.py
+vi generate_sudoku_images.py
 '''
 2. Train keypoint
 '''
->> ~~~
+~~~
 '''
 3. Train number_recognition 
 '''
