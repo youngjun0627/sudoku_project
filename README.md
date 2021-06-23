@@ -73,8 +73,9 @@ python3 main.py --imagepath (your image path)
 #### Mask images of sudoku keypoint detection(box, cells, keypoints)-
 <img src="https://user-images.githubusercontent.com/68416187/123059541-dae16000-d444-11eb-9200-1441f5f48b2f.PNG"  width="250" height="250">  <img src="https://user-images.githubusercontent.com/68416187/123059679-fa788880-d444-11eb-94c8-90dfd05c6485.PNG"  width="250" height="250">  <img src="https://user-images.githubusercontent.com/68416187/123059714-03695a00-d445-11eb-8715-8e8007c30e1e.PNG"  width="250" height="250">
 
-#### 
-https://github.com/youngjun0627/sudoku_project/blob/main/result1.jpg
+#### Detect corners of sudoku-
+![Corners of sudoku](https://github.com/youngjun0627/sudoku_project/blob/main/result1.jpg) 
+
 #### Image of sudoku after keypoint detection and perspective transform-
 ![Transformed image of sudoku](https://github.com/youngjun0627/sudoku_project/blob/main/result.jpg)
 
