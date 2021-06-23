@@ -30,8 +30,7 @@ cd ~~~~~
 
 ## Run the program
 ### Generate dataset
-Change background path.
-Change save path. (image, mask, annotation saving path)
+Change background path.  Change save path.(image, mask, annotation saving path)
 ```  
 vi generate_sudoku_images.py
 ``` 
