@@ -7,14 +7,20 @@ How to use
 git clone https://github.com/youngjun0627/sudoku_project.git
 cd ~~~~~
 ```
-## Requirements
+## Environment
+- Linux 
+- cuda
+- 
 
+## Requirements
+- 
 - Python 3.??
 - 
 
-## Environment
-*
-*
-*
 
 ## File description
+- 
+- 
+- 
+
+## Run the program
