@@ -35,7 +35,7 @@ cd ~~~~~
  > 4. Solve sudoku.
 
 ## Run the program
-###Generate dataset
+### Generate dataset
 Change background path.
 Change save path. (image, mask, annotation saving path)
 ```  
@@ -50,19 +50,19 @@ python3 generate_sudoku_images.py
 python3 utils.py
 ```  
 
-###Train keypoint
+### Train keypoint
 ```  
 cd sudoku_keypoint
 python3 main.py
 ```  
 
-###Train number_recognition 
+### Train number_recognition 
 ```  
 cd sudoku_number_recognition 
 python3 main.py
 ```  
 
-###test
+### Test
 ```  
 cd Sudoku
 python3 main.py --imagepath (your image path)
