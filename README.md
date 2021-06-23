@@ -64,19 +64,19 @@ python3 main.py --imagepath (your image path)
 ## Working
 
 #### Generated image of sudoku-
-![Generated image of sudoku](img 경로~)
+![Generated image of sudoku](입력 이미지 경로~)
 
 #### Detect corners of sudoku-
-![Corners of sudoku](https://github.com/aakashjhawar/SolveSudoku/blob/master/images/contour.jpg)
+![Corners of sudoku](키포인트 검출 이미지 경로)
 
 #### Image of Sudoku after keypoint detection and perspective transform-
-![Transformed image of sudoku](https://github.com/aakashjhawar/SolveSudoku/blob/master/images/threshold.jpg)
+![Transformed image of sudoku](변환 이미지 경로)
 
 #### Recognize digits of sudoku-
-![Detection sudoku image](https://github.com/aakashjhawar/SolveSudoku/blob/master/images/final.jpg)
+![Detection sudoku image](스도쿠 검출 이미지 경로)
 
 #### Solve sudoku-
-![Solved sudoku image](https://github.com/aakashjhawar/SolveSudoku/blob/master/images/final.jpg)
+![Solved sudoku image](솔루션 이미지 경로)
 
 
 
