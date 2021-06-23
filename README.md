@@ -36,6 +36,9 @@ vi config.py
 ## Run the program
 
 ### Generate dataset
+Download background images or mnist or your custom images.
+- background image : https://www.kaggle.com/intelligentguy/newspaper-pages
+- MNIST : https://www.kaggle.com/prokaggler/mnistpng
 Change background path and save path(image, mask, annotation saving path).
 ```  
 vi generate_sudoku_images.py
