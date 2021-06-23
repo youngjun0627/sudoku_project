@@ -2,10 +2,10 @@
 Extract and solve sudoku from image using 2-stage Deep learning model.
 
 ## Getting Started
-How to use
+How to install
 ```    
 git clone https://github.com/youngjun0627/sudoku_project.git
-cd ~~~~~
+cd sudoku
 ```
 
 ## Environment
@@ -38,7 +38,7 @@ Run generate_sudoku_images.py
 ```  
 python3 generate_sudoku_images.py
 ```  
-최종 사용하루 csv파일을 만듬~
+Generate final csv files.
 ```  
 python3 utils.py
 ```  
@@ -61,6 +61,22 @@ cd Sudoku
 python3 main.py --imagepath (your image path)
 ```  
 
+## Working
+
+#### Generated image of sudoku-
+![Generated image of sudoku](img 경로~)
+
+#### Detect corners of sudoku-
+![Corners of sudoku](https://github.com/aakashjhawar/SolveSudoku/blob/master/images/contour.jpg)
+
+#### Image of Sudoku after keypoint detection and perspective transform-
+![Transformed image of sudoku](https://github.com/aakashjhawar/SolveSudoku/blob/master/images/threshold.jpg)
+
+#### Recognize digits of sudoku-
+![Detection sudoku image](https://github.com/aakashjhawar/SolveSudoku/blob/master/images/final.jpg)
+
+#### Solve sudoku-
+![Solved sudoku image](https://github.com/aakashjhawar/SolveSudoku/blob/master/images/final.jpg)
 
 
 
