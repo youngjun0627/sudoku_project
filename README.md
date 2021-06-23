@@ -36,15 +36,38 @@ cd ~~~~~
 
 ## Run the program
 1. Generate dataset
-'''
+Change background path.
+Change save path. (image, mask, annotation saving path)
+```  
 vi generate_sudoku_images.py
-'''
+``` 
+Run generate_sudoku_images.py
+```  
+python3 generate_sudoku_images.py
+```  
+최종 사용하루 csv파일을 만듬~
+```  
+python3 utils.py
+```  
+
 2. Train keypoint
-'''
-~~~
-'''
+```  
+cd sudoku_keypoint
+python3 main.py
+```  
+
 3. Train number_recognition 
-'''
-~~~
-'''
+```  
+cd sudoku_number_recognition 
+python3 main.py
+```  
+
 4. test
+```  
+cd Sudoku
+python3 main.py --imagepath (your image path)
+```  
+
+
+
+
